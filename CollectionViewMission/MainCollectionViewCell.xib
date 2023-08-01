@@ -28,11 +28,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GHz-Tf-EVN">
-                                <rect key="frame" x="10" y="94.666666666666686" width="70" height="102.33333333333331"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="oFZ-E7-oF2"/>
-                                </constraints>
+                                <rect key="frame" x="82" y="58.666666666666671" width="87" height="141.33333333333331"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gf3-Lm-boU">
+                                <rect key="frame" x="82" y="58.666666666666664" width="28" height="26.666666666666664"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="star" catalog="system"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnL-k8-eCS">
                                 <rect key="frame" x="10" y="58.666666666666657" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -42,14 +45,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GHz-Tf-EVN" firstAttribute="top" secondItem="BnL-k8-eCS" secondAttribute="bottom" constant="15" id="3Pf-ch-boE"/>
                             <constraint firstItem="SCA-ss-esi" firstAttribute="leading" secondItem="YBI-Ui-Izz" secondAttribute="leading" constant="10" id="DDK-4N-jYn"/>
-                            <constraint firstItem="GHz-Tf-EVN" firstAttribute="leading" secondItem="SCA-ss-esi" secondAttribute="leading" id="Fyt-h9-y9o"/>
+                            <constraint firstItem="Gf3-Lm-boU" firstAttribute="top" secondItem="GHz-Tf-EVN" secondAttribute="top" id="EaN-pq-DcE"/>
                             <constraint firstAttribute="trailing" secondItem="SCA-ss-esi" secondAttribute="trailing" constant="20" id="Jac-pU-fAQ"/>
+                            <constraint firstItem="GHz-Tf-EVN" firstAttribute="trailing" secondItem="SCA-ss-esi" secondAttribute="trailing" id="K8I-l7-Q0A"/>
+                            <constraint firstItem="GHz-Tf-EVN" firstAttribute="top" secondItem="BnL-k8-eCS" secondAttribute="top" id="L18-bN-omQ"/>
                             <constraint firstItem="BnL-k8-eCS" firstAttribute="top" secondItem="SCA-ss-esi" secondAttribute="bottom" constant="10" id="Pv6-rL-FOa"/>
+                            <constraint firstAttribute="bottom" secondItem="GHz-Tf-EVN" secondAttribute="bottom" id="SJb-2j-RSc"/>
                             <constraint firstItem="BnL-k8-eCS" firstAttribute="leading" secondItem="SCA-ss-esi" secondAttribute="leading" id="ShX-5X-eNa"/>
                             <constraint firstItem="SCA-ss-esi" firstAttribute="top" secondItem="YBI-Ui-Izz" secondAttribute="top" constant="8" id="eiz-Mu-djt"/>
-                            <constraint firstAttribute="bottom" secondItem="GHz-Tf-EVN" secondAttribute="bottom" constant="3" id="jgX-Cg-wYg"/>
+                            <constraint firstItem="Gf3-Lm-boU" firstAttribute="leading" secondItem="GHz-Tf-EVN" secondAttribute="leading" id="kh3-VU-gpj"/>
+                            <constraint firstItem="GHz-Tf-EVN" firstAttribute="leading" secondItem="BnL-k8-eCS" secondAttribute="trailing" constant="30" id="sCb-Wp-YUR"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,6 +69,7 @@
             </constraints>
             <size key="customSize" width="189" height="200"/>
             <connections>
+                <outlet property="bestMovieBtn" destination="Gf3-Lm-boU" id="46N-4d-tPU"/>
                 <outlet property="bgView" destination="YBI-Ui-Izz" id="j0I-Jc-XLz"/>
                 <outlet property="mainImage" destination="GHz-Tf-EVN" id="2uL-Rr-p6h"/>
                 <outlet property="rateLabel" destination="BnL-k8-eCS" id="5KP-07-Fc5"/>
@@ -72,8 +79,12 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

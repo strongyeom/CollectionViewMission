@@ -12,15 +12,17 @@ struct Movie {
     var title : String
     var description: String
     var rate: Double
-     var bgColor: UIColor
-    
+    var bgColor: UIColor
+    var isBestMovie: Bool
 
     
-    init(imageName: String, title: String, description: String, rate: Double, bgColor: UIColor) {
+    init(imageName: String, title: String, description: String, rate: Double, bgColor: UIColor,
+         isBestMovie: Bool) {
         self.imageName = imageName
         self.title = title
         self.description = description
         self.rate = rate
         self.bgColor = bgColor
+        self.isBestMovie = isBestMovie
     }
 }

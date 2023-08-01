@@ -19,10 +19,15 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var descriptionLabel: UILabel!
     
+    @IBOutlet var bestMovieBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureDetail()
+        self.bestMovieBtn.addTarget(self, action: #selector(bestMovieBtnClicked(_:)), for: .touchUpInside)
+    }
+    
+    func configureDetail() {
         guard let detailData = detailData else { return }
         
         navigationItem.title = "영화 상세 화면"
@@ -43,5 +48,19 @@ class DetailViewController: UIViewController {
         
         descriptionLabel.text = detailData.description
     }
+    
+    @objc func bestMovieBtnClicked(_ sender: UIButton) {
+        print(#fileID, #function, #line,"- sender" )
+        
+        
+        detailData?.isBestMovie.toggle()
+        
+        let btnImage = detailData?.isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        
+        sender.setImage(btnImage, for: .normal)
+    
+    }
+
+    
 
 }
