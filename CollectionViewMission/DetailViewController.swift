@@ -31,8 +31,8 @@ class DetailViewController: UIViewController {
         guard let detailData = detailData else { return }
         
         navigationItem.title = "영화 상세 화면"
-
-       
+//        navigationController?.navigationBar.tintColor = detailData.bgColor
+        navigationController?.navigationBar.backgroundColor = detailData.bgColor
         mainImage.image = UIImage(named: detailData.imageName)
         mainImage.layer.cornerRadius = 12
         mainImage.clipsToBounds = true
@@ -60,7 +60,11 @@ class DetailViewController: UIViewController {
         sender.setImage(btnImage, for: .normal)
     
     }
-
     
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print("DetailViewController - viewWillDisappear")
+        navigationController?.navigationBar.backgroundColor = .white
+    }
+    
 }

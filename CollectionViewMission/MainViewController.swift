@@ -36,8 +36,6 @@ class MainViewController: UICollectionViewController {
         
             searchController.searchBar.placeholder = "영화를 검색하세요"
             searchController.hidesNavigationBarDuringPresentation = false
-        
-       
             
             self.navigationItem.searchController = searchController
             self.navigationItem.title = "Search"
