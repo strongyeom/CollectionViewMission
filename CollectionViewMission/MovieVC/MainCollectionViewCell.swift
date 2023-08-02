@@ -38,9 +38,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.bgView.backgroundColor = item.bgColor
         self.bgView.layer.cornerRadius = 12
         self.bgView.clipsToBounds = true
-        
-       print("self.bestMovieBtn.tag", self.bestMovieBtn.tag)
-     
+
     }
 
     @objc func bestMovieBtnClicked(_ sender: UIButton) {
