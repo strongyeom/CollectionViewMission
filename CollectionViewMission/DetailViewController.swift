@@ -52,11 +52,7 @@ class DetailViewController: UIViewController {
     @objc func bestMovieBtnClicked(_ sender: UIButton) {
         print(#fileID, #function, #line,"- sender" )
        
-        detailData?.isBestMovie.toggle()
         
-        let btnImage = detailData?.isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        
-        sender.setImage(btnImage, for: .normal)
     }
 
     

@@ -19,10 +19,13 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var mainImage: UIImageView!
     
     @IBOutlet var bestMovieBtn: UIButton!
+    
+    var isBestMovie: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        bestMovieBtn.addTarget(self, action: #selector(bestMovieBtn(_:)), for: .touchUpInside)
+      
+        self.bestMovieBtn.addTarget(self, action: #selector(bestMovieBtnClicked(_:)), for: .touchUpInside)
     }
     
     func configureCell(item : Movie) {
@@ -36,9 +39,18 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.bgView.layer.cornerRadius = 12
         self.bgView.clipsToBounds = true
         
+       print("self.bestMovieBtn.tag", self.bestMovieBtn.tag)
+     
     }
-    
-    @objc func bestMovieBtn(_ sender: UIButton) {
-        print("MainCollectionViewCell - Btn 클릭 \(sender.tag)")
+
+    @objc func bestMovieBtnClicked(_ sender: UIButton) {
+        
+        isBestMovie.toggle()
+        print("sender : \(sender.tag)")
+        let btnImage = isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        
+        bestMovieBtn.setImage(btnImage, for: .normal)
+        
+        
     }
 }

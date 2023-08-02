@@ -51,7 +51,7 @@ class MainViewController: UICollectionViewController {
         self.searchController.searchBar.delegate = self
 
     }
-   
+
     
     @IBAction func searchBtnClicked(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -109,7 +109,9 @@ class MainViewController: UICollectionViewController {
     // MARK: - cellForItemAt
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
-
+        
+        cell.bestMovieBtn.tag = movies.movie[indexPath.row].exampleBtnCount
+        
         switch searchIsResult {
         case .equal:
             print("검색창에 글자가 입력되고 있음 - cellForItemAt ")
@@ -118,11 +120,12 @@ class MainViewController: UICollectionViewController {
             cell.configureCell(item: searchItem)
         case .notEqual:
             let item = movies.movie[indexPath.item]
+            
             cell.configureCell(item: item)
         }
         
-        cell.bestMovieBtn.tag = movies.movie[indexPath.row].exampleBtnCount
-        print("movies.movie[indexPath.row]",movies.movie[indexPath.row].exampleBtnCount)
+        
+        
         return cell
     }
     
