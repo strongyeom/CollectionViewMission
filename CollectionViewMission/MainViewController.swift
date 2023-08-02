@@ -14,8 +14,7 @@ enum SearchIsResult: String {
 
 class MainViewController: UICollectionViewController {
     
-    var movies = MovieInfo()
-    
+    var movies = MovieInfo()     
     var searchResult: [Movie] = []
     
     var searchIsResult: SearchIsResult = .notEqual
@@ -24,12 +23,19 @@ class MainViewController: UICollectionViewController {
     
     var item: Movie?
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         settingXib()
         setCollectionViewLayout()
         settingSearchController()
         searchIsResult = .notEqual
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = .white
+        collectionView.reloadData()
+        
     }
     
     func settingSearchController() {
@@ -115,9 +121,8 @@ class MainViewController: UICollectionViewController {
             cell.configureCell(item: item)
         }
         
-        cell.bestMovieBtn.tag = indexPath.row
-
-     
+        cell.bestMovieBtn.tag = movies.movie[indexPath.row].exampleBtnCount
+        print("movies.movie[indexPath.row]",movies.movie[indexPath.row].exampleBtnCount)
         return cell
     }
     
@@ -139,7 +144,7 @@ class MainViewController: UICollectionViewController {
         
         print("didSelectItemAt: \(item)")
         vc.detailData = item
-        
+   
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -186,7 +191,7 @@ extension MainViewController: UISearchResultsUpdating {
         
         let centerSpacing: CGFloat = 30
         
-        let width = UIScreen.main.bounds.width - (spacing * 3) - centerSpacing
+        let _ = UIScreen.main.bounds.width - (spacing * 3) - centerSpacing
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - (spacing * 3), height: 200)
         
         layout.minimumLineSpacing = centerSpacing

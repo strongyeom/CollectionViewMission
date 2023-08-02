@@ -22,6 +22,7 @@ class MainCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        bestMovieBtn.addTarget(self, action: #selector(bestMovieBtn(_:)), for: .touchUpInside)
     }
     
     func configureCell(item : Movie) {
@@ -35,7 +36,9 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.bgView.layer.cornerRadius = 12
         self.bgView.clipsToBounds = true
         
-        
-      
+    }
+    
+    @objc func bestMovieBtn(_ sender: UIButton) {
+        print("MainCollectionViewCell - Btn 클릭 \(sender.tag)")
     }
 }

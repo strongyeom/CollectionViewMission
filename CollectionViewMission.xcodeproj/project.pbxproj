@@ -18,7 +18,7 @@
 		263F99852A779B29000DCAF9 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99832A779B29000DCAF9 /* MainCollectionViewCell.swift */; };
 		263F99862A779B29000DCAF9 /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F99842A779B29000DCAF9 /* MainCollectionViewCell.xib */; };
 		263F99882A779B4D000DCAF9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99872A779B4D000DCAF9 /* Movie.swift */; };
-		263F998A2A779BA2000DCAF9 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99892A779BA2000DCAF9 /* MovieList.swift */; };
+		263F998A2A779BA2000DCAF9 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99892A779BA2000DCAF9 /* MovieInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		263F99832A779B29000DCAF9 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		263F99842A779B29000DCAF9 /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
 		263F99872A779B4D000DCAF9 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		263F99892A779BA2000DCAF9 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		263F99892A779BA2000DCAF9 /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 				263F99832A779B29000DCAF9 /* MainCollectionViewCell.swift */,
 				263F99842A779B29000DCAF9 /* MainCollectionViewCell.xib */,
 				263F99872A779B4D000DCAF9 /* Movie.swift */,
-				263F99892A779BA2000DCAF9 /* MovieList.swift */,
+				263F99892A779BA2000DCAF9 /* MovieInfo.swift */,
 			);
 			path = CollectionViewMission;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 				263F99702A779986000DCAF9 /* MainViewController.swift in Sources */,
 				263F996C2A779986000DCAF9 /* AppDelegate.swift in Sources */,
 				263F996E2A779986000DCAF9 /* SceneDelegate.swift in Sources */,
-				263F998A2A779BA2000DCAF9 /* MovieList.swift in Sources */,
+				263F998A2A779BA2000DCAF9 /* MovieInfo.swift in Sources */,
 				263F99802A779AFB000DCAF9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
