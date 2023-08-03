@@ -49,11 +49,7 @@ class TVCCombinationCVCViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "TVCCombinationCVC", bundle: nil)
         
         guard let vc = storyBoard.instantiateViewController(withIdentifier: "PickerViewController") as? PickerViewController else { return }
-        // vc.modalPresentationStyle = .overFullScreen
-        //vc.modalTransitionStyle = .coverVertical
-     
-        
-        //let modalViewController = PickerViewController()
+
         vc.modalPresentationStyle = .formSheet
         present(vc, animated: true)
     }

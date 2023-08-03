@@ -11,21 +11,43 @@ class PickerViewController: UIViewController {
     
     let movies = MovieInfo()
     
-    //let picker = UIPickerView()
+    let picker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
 
     @IBOutlet var loadPicker: UIPickerView!
     
+    @IBOutlet var pickBgView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // sheetPresentationController(UISheetPresentationController): 15.0 부터 사용 가능 모달의 모양과 동작을 정의
         if let sheetPresentationController = sheetPresentationController {
-            sheetPresentationController.detents = [.medium(), .large()]
+            // detents : 높이 지정
+            sheetPresentationController.detents = [.medium()]
             
         }
         
-        loadPicker.delegate = self
-        loadPicker.dataSource = self
         
-        self.view.backgroundColor = .clear
+        view.addSubview(picker)
+        pickBgView.addSubview(picker)
+        
+        NSLayoutConstraint.activate([
+            picker.leadingAnchor.constraint(equalTo: pickBgView.leadingAnchor, constant: 10),
+            picker.topAnchor.constraint(equalTo: pickBgView.topAnchor, constant: 10),
+            picker.trailingAnchor.constraint(equalTo: pickBgView.trailingAnchor, constant: -10),
+            picker.bottomAnchor.constraint(equalTo: pickBgView.bottomAnchor, constant: -10)
+        
+        ])
+        
+        print("picker",picker)
+        picker.delegate = self
+        picker.dataSource = self
+        
+        pickBgView.layer.cornerRadius = 12
+        pickBgView.clipsToBounds = true
     }
 }
 
