@@ -29,6 +29,10 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var bestMovieBtn: UIButton!
     
+    @IBOutlet var textView: UITextView!
+    
+    var placeHolder: String = "두번째 탭에서 넘어온 홀더에요."
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,12 +61,14 @@ class DetailViewController: UIViewController {
         mainTitle.text = "제목 : \(detailData.title)"
         mainTitle.font = UIFont.systemFont(ofSize: 17, weight: .heavy)
         
-       
+        
         rateLabel.text = "\(detailData.rate) 점"
         rateLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
         rateLabel.textColor = .lightGray
         
         descriptionLabel.text = detailData.description
+        descriptionLabel.isHidden = false
+        textView.isHidden = true
     }
     
     func configureListDetail() {
@@ -84,7 +90,17 @@ class DetailViewController: UIViewController {
         rateLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
         rateLabel.textColor = .lightGray
         
-//        descriptionLabel.text = detailData.description
+        descriptionLabel.isHidden = true
+        textView.isHidden = false
+        configureTextView()
+    }
+    
+    func configureTextView() {
+        textView.delegate = self
+        textView.text = placeHolder
+        textView.textColor = .lightGray
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = UIColor.red.cgColor
     }
     
     @objc func xmarkBtnClicked(_ sender: UIBarButtonItem) {
@@ -97,6 +113,25 @@ class DetailViewController: UIViewController {
        
         
     }
+}
 
+extension DetailViewController: UITextViewDelegate {
+    // 커서가 시작 될때
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("커서 시작 ")
+        if textView.text == placeHolder {
+            textView.text = nil
+            textView.textColor = .black
+        }
+        
+    }
     
+    
+    // 커서가 없어 졌을때
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeHolder
+            textView.textColor = UIColor.lightGray
+        }
+    }
 }
