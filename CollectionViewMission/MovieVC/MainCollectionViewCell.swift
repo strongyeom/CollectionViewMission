@@ -25,7 +25,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
       
-        self.bestMovieBtn.addTarget(self, action: #selector(bestMovieBtnClicked(_:)), for: .touchUpInside)
+   
     }
     
     func configureCell(item : Movie) {
@@ -41,14 +41,4 @@ class MainCollectionViewCell: UICollectionViewCell {
 
     }
 
-    @objc func bestMovieBtnClicked(_ sender: UIButton) {
-        
-        isBestMovie.toggle()
-        print("sender : \(sender.tag)")
-        let btnImage = isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        
-        bestMovieBtn.setImage(btnImage, for: .normal)
-        
-        
-    }
 }

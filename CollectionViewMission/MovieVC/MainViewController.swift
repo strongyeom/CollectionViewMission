@@ -23,6 +23,9 @@ class MainViewController: UICollectionViewController {
     
     var item: Movie?
     
+    var selectedBtn: Bool = false
+    
+    
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +113,7 @@ class MainViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
         
+        // tag에 static으로 숫자 넣기
         cell.bestMovieBtn.tag = movies.movie[indexPath.row].exampleBtnCount
         
         switch searchIsResult {
@@ -125,8 +129,32 @@ class MainViewController: UICollectionViewController {
         }
         
         
-        
+        cell.bestMovieBtn.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func btnClicked(_ sender: UIButton) {
+        print("VC에서 버튼 클릭 : \(sender.tag)")
+        
+        movies.movie[sender.tag].isBestMovie.toggle()
+        
+        selectedBtn = movies.movie[sender.tag].isBestMovie
+        
+        
+        
+        
+        let btnImage = selectedBtn == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        
+        sender.setImage(btnImage, for: .normal)
+        
+//        isBestMovie.toggle()
+//        print("sender : \(sender.tag)")
+//        let btnImage = isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+//
+//        bestMovieBtn.setImage(btnImage, for: .normal)
+        
+        
+
     }
     
     // MARK: - didSelectItemAt
