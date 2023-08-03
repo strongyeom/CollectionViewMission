@@ -204,9 +204,7 @@ class MainViewController: UICollectionViewController {
         case .notEqual:
             item =  movies.movie[indexPath.row]
         }
-        
-        
-        print("didSelectItemAt: \(item)")
+        vc.tabPresentStyle = .home
         vc.detailData = item
    
         navigationController?.pushViewController(vc, animated: true)

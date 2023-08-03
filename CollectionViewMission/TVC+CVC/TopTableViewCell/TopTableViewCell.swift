@@ -7,12 +7,12 @@
 
 import UIKit
 
-class TopTableViewCell: UITableViewCell,UICollectionViewDelegate, UICollectionViewDataSource {
+class TopTableViewCell: UITableViewCell {
 
     static let identifier = "TopTableViewCell"
     @IBOutlet var topcollectionView: UICollectionView!
     
-    let movies = MovieInfo()
+    var searchMovies: [Movie]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +20,8 @@ class TopTableViewCell: UITableViewCell,UICollectionViewDelegate, UICollectionVi
         topcollectionView.dataSource = self
         configureCollectionViewLayout()
         topcollectionView.backgroundColor = .red
+        print("searchMovies",searchMovies)
+    
     }
     
     
@@ -34,21 +36,28 @@ class TopTableViewCell: UITableViewCell,UICollectionViewDelegate, UICollectionVi
     }
     
     
+}
 
+extension TopTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("첫번째 테이블 뷰 Cell - didSelectItemAt \(indexPath)")
+    }
+}
+
+extension TopTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.movie.count
+        guard let searchMovies else { return 0 }
+       
+        return searchMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCollectionViewCell.identifier, for: indexPath) as? TopCollectionViewCell else { return UICollectionViewCell() }
-        let item = movies.movie[indexPath.row]
-        cell.mainImage.image = UIImage(named: item.imageName)
+        guard let searchMovies else { return UICollectionViewCell() }
+        let item = searchMovies[indexPath.row]
+        cell.mainImage.image = UIImage(named: item.title)
         
         return cell
     }
     
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("첫번째 테이블 뷰 Cell - didSelectItemAt \(indexPath)")
-    }
 }
