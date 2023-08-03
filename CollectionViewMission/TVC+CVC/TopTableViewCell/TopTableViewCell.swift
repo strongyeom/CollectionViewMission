@@ -20,7 +20,6 @@ class TopTableViewCell: UITableViewCell {
         topcollectionView.dataSource = self
         configureCollectionViewLayout()
         topcollectionView.backgroundColor = .red
-        print("searchMovies",searchMovies)
     
     }
     
