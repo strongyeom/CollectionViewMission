@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
         mainImage.contentMode = .scaleToFill
         
         mainTitle.text = "제목 : \(detailData.title)"
-        mainTitle.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        mainTitle.font = UIFont.systemFont(ofSize: 17, weight: .heavy)
         
        
         rateLabel.text = "\(detailData.rate) 점"

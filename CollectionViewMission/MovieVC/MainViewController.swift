@@ -5,6 +5,19 @@
 //  Created by 염성필 on 2023/07/31.
 //
 
+/*
+ UISearchController를 사용할 때 cancel 버튼을 눌렀을때 검색에 있는 단어가 지워지는 이유?
+ => 결론... 애플이 내장한 기술이라 공식문서에서 확인 할 수 없다.
+ 하지만 커스텀으로 cancel button에 액션을 만들 수 있음
+ UISearchController는 UISearchBar 프로토콜을 채택하고 있어서
+ 
+ extension MainViewController: UISearchBarDelegate {
+     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+         print("cancel 버튼이 눌렸다.")
+     }
+ }
+사용하면 됨...
+ */
 import UIKit
 
 enum SearchIsResult: String {
@@ -19,7 +32,7 @@ class MainViewController: UICollectionViewController {
     
     var searchIsResult: SearchIsResult = .notEqual
     // 현재 VC에서 표시하려면 searchResultsController: nil로 지정
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: SearchViewController())
     
     var item: Movie?
     
@@ -44,15 +57,15 @@ class MainViewController: UICollectionViewController {
     func settingSearchController() {
         
             searchController.searchBar.placeholder = "영화를 검색하세요"
+        
             searchController.hidesNavigationBarDuringPresentation = false
             
             self.navigationItem.searchController = searchController
-            self.navigationItem.title = "Search"
+            self.navigationItem.title = "영화 목록"
             self.navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        
-        self.searchController.searchBar.delegate = self
-
+        searchController.automaticallyShowsCancelButton = true
     }
 
     
@@ -94,6 +107,23 @@ class MainViewController: UICollectionViewController {
          
          collectionView.collectionViewLayout = layout
          
+    }
+    
+    fileprivate func settingStartSearching() {
+        let layout = UICollectionViewFlowLayout()
+        
+        let spacing: CGFloat = 10
+        
+        let centerSpacing: CGFloat = 30
+        
+        let _ = UIScreen.main.bounds.width - (spacing * 3) - centerSpacing
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - (spacing * 3), height: 200)
+        
+        layout.minimumLineSpacing = centerSpacing
+        layout.minimumInteritemSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        
+        collectionView.collectionViewLayout = layout
     }
  
     
@@ -141,7 +171,10 @@ class MainViewController: UICollectionViewController {
         selectedBtn = movies.movie[sender.tag].isBestMovie
         
         
-        
+        /*
+         왜 VC에서 버튼 액션을 만드냐? Cell에서 만들면 되지
+         => Cell에서 만들면 Cell이 생성될때마다 액션이 만들어지기 때문에 데이터 관점에서 불필요하게 실행되는 부분이 있고, 데이터를 옮기는 작업을 할때 Cell에서 액션을 하게 되면 클로져를 사용해서 데이터를 VC컨으로 옮겨야함
+         */
         
         let btnImage = selectedBtn == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         
@@ -183,7 +216,7 @@ class MainViewController: UICollectionViewController {
 
 // MARK: - UISearchResultsUpdating
 extension MainViewController: UISearchResultsUpdating {
-    
+    // 검색을 할때마다 메서드 실행
     func updateSearchResults(for searchController: UISearchController) {
         print(searchController.searchBar.text ?? "")
         
@@ -213,30 +246,12 @@ extension MainViewController: UISearchResultsUpdating {
          collectionView.reloadData()
         
     }
-    
-    // 검색을 할때마다 메서드 실행
-    fileprivate func settingStartSearching() {
-        let layout = UICollectionViewFlowLayout()
-        
-        let spacing: CGFloat = 10
-        
-        let centerSpacing: CGFloat = 30
-        
-        let _ = UIScreen.main.bounds.width - (spacing * 3) - centerSpacing
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - (spacing * 3), height: 200)
-        
-        layout.minimumLineSpacing = centerSpacing
-        layout.minimumInteritemSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        
-        collectionView.collectionViewLayout = layout
-    }
+   
 }
 
+
 extension MainViewController: UISearchBarDelegate {
-    
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        collectionView.reloadData()
+        print("cancel 버튼이 눌렸다.")
     }
 }
