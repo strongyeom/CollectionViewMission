@@ -19,6 +19,7 @@
 		263F99862A779B29000DCAF9 /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F99842A779B29000DCAF9 /* MainCollectionViewCell.xib */; };
 		263F99882A779B4D000DCAF9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99872A779B4D000DCAF9 /* Movie.swift */; };
 		263F998A2A779BA2000DCAF9 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263F99892A779BA2000DCAF9 /* MovieInfo.swift */; };
+		26A53EF12A7BC4A4002C3317 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A53EF02A7BC4A4002C3317 /* PickerViewController.swift */; };
 		26E770172A7A407D00CAD199 /* TVCCombinationCVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E770162A7A407D00CAD199 /* TVCCombinationCVC.storyboard */; };
 		26E7701B2A7A414B00CAD199 /* TVCCombinationCVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7701A2A7A414B00CAD199 /* TVCCombinationCVCViewController.swift */; };
 		26E7702D2A7A48B300CAD199 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7702C2A7A48B300CAD199 /* TopTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 		263F99842A779B29000DCAF9 /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
 		263F99872A779B4D000DCAF9 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		263F99892A779BA2000DCAF9 /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
+		26A53EF02A7BC4A4002C3317 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		26E770162A7A407D00CAD199 /* TVCCombinationCVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TVCCombinationCVC.storyboard; sourceTree = "<group>"; };
 		26E7701A2A7A414B00CAD199 /* TVCCombinationCVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCCombinationCVCViewController.swift; sourceTree = "<group>"; };
 		26E7702C2A7A48B300CAD199 /* TopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				26E770162A7A407D00CAD199 /* TVCCombinationCVC.storyboard */,
+				26A53EF02A7BC4A4002C3317 /* PickerViewController.swift */,
 				26E7701A2A7A414B00CAD199 /* TVCCombinationCVCViewController.swift */,
 				26E770312A7A580F00CAD199 /* BottomTableViewCell */,
 				26E770302A7A57F800CAD199 /* TopTableViewCell */,
@@ -208,6 +211,7 @@
 				26E770332A7A582D00CAD199 /* BottomTableViewCell.swift in Sources */,
 				263F99882A779B4D000DCAF9 /* Movie.swift in Sources */,
 				26E7702D2A7A48B300CAD199 /* TopTableViewCell.swift in Sources */,
+				26A53EF12A7BC4A4002C3317 /* PickerViewController.swift in Sources */,
 				263F99822A779B0F000DCAF9 /* SearchViewController.swift in Sources */,
 				263F99852A779B29000DCAF9 /* MainCollectionViewCell.swift in Sources */,
 				263F99702A779986000DCAF9 /* MainViewController.swift in Sources */,

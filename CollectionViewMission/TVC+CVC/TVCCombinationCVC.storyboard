@@ -154,6 +154,38 @@
             </objects>
             <point key="canvasLocation" x="1043.5114503816794" y="3.5211267605633805"/>
         </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="C7u-9A-1A5">
+            <objects>
+                <viewController storyboardIdentifier="PickerViewController" id="3BO-V3-udJ" customClass="PickerViewController" customModule="CollectionViewMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96x-kC-h4k">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WM5-0s-TJO">
+                                <rect key="frame" x="0.0" y="598" width="393" height="220"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="cjI-GW-3b6"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bT1-p8-5SB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WM5-0s-TJO" firstAttribute="leading" secondItem="bT1-p8-5SB" secondAttribute="leading" id="DnT-O5-bUH"/>
+                            <constraint firstItem="bT1-p8-5SB" firstAttribute="trailing" secondItem="WM5-0s-TJO" secondAttribute="trailing" id="JX2-AW-fKx"/>
+                            <constraint firstItem="bT1-p8-5SB" firstAttribute="bottom" secondItem="WM5-0s-TJO" secondAttribute="bottom" id="W5u-4b-vkS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadPicker" destination="WM5-0s-TJO" id="V7i-OR-l77"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TdF-Wk-jAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942.7480916030534" y="17.605633802816904"/>
+        </scene>
         <!--테+컬-->
         <scene sceneID="weQ-pe-pvN">
             <objects>
@@ -182,6 +214,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

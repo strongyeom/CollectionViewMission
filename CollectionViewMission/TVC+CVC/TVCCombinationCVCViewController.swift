@@ -5,6 +5,10 @@
 //  Created by 염성필 on 2023/08/02.
 //
 
+/*
+ 메인 테이블 뷰 VC 에서 데이터를  Cell -> CollectionView -> CollectionViewCell로 옮기는 방법은 ?
+ */
+
 import UIKit
 
 enum SectionType: Int, CaseIterable {
@@ -19,7 +23,10 @@ class TVCCombinationCVCViewController: UIViewController {
     
     var searchBar = UISearchBar()
     
+  
     var searchedData: [Movie]?
+    
+   
     
     @IBOutlet var baseTableView: UITableView!
     
@@ -28,13 +35,27 @@ class TVCCombinationCVCViewController: UIViewController {
     
         settingTableView()
         navigationItem.titleView = searchBar
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "flame"), style: .plain, target: self, action: #selector(leftbarBtnClicked(_:)))
+        
+    
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "피커", style: .plain, target: self, action: #selector(leftbarBtnClicked(_:)))
         searchBar.showsCancelButton = true
         searchBar.delegate = self
+        
     }
     
     @objc func leftbarBtnClicked(_ sender: UIBarButtonItem) {
         print("바 버튼 클릭")
+       
+        let storyBoard = UIStoryboard(name: "TVCCombinationCVC", bundle: nil)
+        
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "PickerViewController") as? PickerViewController else { return }
+        // vc.modalPresentationStyle = .overFullScreen
+        //vc.modalTransitionStyle = .coverVertical
+     
+        
+        //let modalViewController = PickerViewController()
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true)
     }
     
     func settingTableView() {
@@ -187,3 +208,4 @@ extension TVCCombinationCVCViewController: UISearchBarDelegate {
     }
     
 }
+
