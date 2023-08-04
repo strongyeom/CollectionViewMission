@@ -37,6 +37,19 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.rateLabel.text = "\(item.rate)점"
         self.bgView.backgroundColor = item.bgColor
         
+        if item.isBestMovie {
+            bestMovieBtn.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            bestMovieBtn.setImage(UIImage(systemName: "star"), for: .normal)
+        }
     }
 
 }
+
+/*
+ if data.like {
+     likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+ } else {
+     likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+ }
+ */

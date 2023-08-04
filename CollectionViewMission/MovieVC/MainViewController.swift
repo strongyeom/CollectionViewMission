@@ -35,6 +35,7 @@ class MainViewController: UICollectionViewController {
     let searchController = UISearchController(searchResultsController: SearchViewController())
     
     var item: Movie?
+    var searchTitle: String?
     
     var selectedBtn: Bool = false
     
@@ -168,26 +169,13 @@ class MainViewController: UICollectionViewController {
         
         movies.movie[sender.tag].isBestMovie.toggle()
         
-        selectedBtn = movies.movie[sender.tag].isBestMovie
-        
-        
         /*
          왜 VC에서 버튼 액션을 만드냐? Cell에서 만들면 되지
          => Cell에서 만들면 Cell이 생성될때마다 액션이 만들어지기 때문에 데이터 관점에서 불필요하게 실행되는 부분이 있고, 데이터를 옮기는 작업을 할때 Cell에서 액션을 하게 되면 클로져를 사용해서 데이터를 VC컨으로 옮겨야함
          */
-        
-        let btnImage = selectedBtn == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        
-        sender.setImage(btnImage, for: .normal)
-        
-//        isBestMovie.toggle()
-//        print("sender : \(sender.tag)")
-//        let btnImage = isBestMovie == true ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-//
-//        bestMovieBtn.setImage(btnImage, for: .normal)
-        
-        
-
+     
+        // 현재 로직이 movies.movie에서 적용된 isBestMovie를 search를 해서 그래도 가져오는 것이기 때문에 다른 로직은 필요 없음
+        collectionView.reloadData()
     }
     
     // MARK: - didSelectItemAt
@@ -204,6 +192,7 @@ class MainViewController: UICollectionViewController {
         case .notEqual:
             item =  movies.movie[indexPath.row]
         }
+        
         vc.tabPresentStyle = .home
         vc.detailData = item
    
@@ -216,31 +205,48 @@ class MainViewController: UICollectionViewController {
 extension MainViewController: UISearchResultsUpdating {
     // 검색을 할때마다 메서드 실행
     func updateSearchResults(for searchController: UISearchController) {
+        
+        searchResult.removeAll()
         print(searchController.searchBar.text ?? "")
         
         guard let searchText = searchController.searchBar.text else { return }
-        let searchFilterText = movies.movie.filter {
-            $0.title.contains(searchText)
+        
+//        let searchFilterText = movies.movie.filter {
+//            $0.title.contains(searchText)
+//        }
+        
+        for item in movies.movie {
+            if item.title.contains(searchText) {
+                searchResult.append(item)
+            }
         }
         
-        if !searchFilterText.isEmpty {
-            print("검색 결과 일치하는것이 있다면")
-            searchIsResult = .equal
-        } else {
-            print("검색 결과 일치하는것이 없다면")
+//        if !searchFilterText.isEmpty {
+//            print("검색 결과 일치하는것이 있다면")
+//            searchIsResult = .equal
+//        } else {
+//            print("검색 결과 일치하는것이 없다면")
+//            searchIsResult = .notEqual
+//        }
+//
+//        searchResult = searchFilterText
+//
+        if searchResult.isEmpty {
             searchIsResult = .notEqual
-        }
-        
-        searchResult = searchFilterText
-        
-        switch searchIsResult {
-        case .equal:
-            settingStartSearching()
-        case .notEqual:
             setCollectionViewLayout()
+            
+        } else {
+            searchIsResult = .equal
+            settingStartSearching()
         }
+//        switch searchIsResult {
+//        case .equal:
+//            settingStartSearching()
+//        case .notEqual:
+//            setCollectionViewLayout()
+//        }
         
-        
+        print("searchResult",searchResult)
          collectionView.reloadData()
         
     }
